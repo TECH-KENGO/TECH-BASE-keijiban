@@ -1,3 +1,13 @@
+<?php
+//mission_4-1掲示板
+
+//データベース接続
+$dsn = データベース名;
+$user = ユーザー名;
+$password = パスワード;
+$pdo = new PDO($dsn,$user,$password);
+
+
 //データの受け取りと宣言
 $come = $_POST['come'];	//コメント
 $name = $_POST['name']; //名前
