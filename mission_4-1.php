@@ -2,7 +2,7 @@
 $dsn=
 'mysql:dbname=co_kengo_it_1313_com;host=localhost';
 $user = 'co-kengo.it.1313.c';
-$password = 'mirukengo';
+$password = 
 $pdo = new PDO($dsn,$user,$password);
 
 //データの受け取りと宣言
