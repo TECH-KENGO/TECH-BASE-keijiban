@@ -79,7 +79,7 @@ $result = $pdo -> query($sql);
 	foreach ($result as $rows){
 		$DB_pass = $rows['password'];
 }
-//入力されたぱｓｓとｄｂがおなじなら編集する
+//入力されたパスワードとデータベースが同じなら編集する
 if($pass==$DB_pass){
 	$sql = "update kengo set name='$name',comment='$come'where num = $flag";
 $result = $pdo->query($sql);
