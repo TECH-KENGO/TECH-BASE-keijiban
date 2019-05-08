@@ -23,7 +23,7 @@ if($name != '' && $come != ''){
 $time = date("Y/m/d H:i:s");
 
 //行数の取得をするsql
-$sql = "SELECT COUNT(*) FROM kengo"; 
+$sql = "SELECT COUNT(*) FROM app"; 
 
 //テーブルの行数を取得
 $results =  $pdo -> query($sql);
@@ -35,7 +35,7 @@ $num++;
 //$numが投稿番号となる。
 
 	//insert文
-	$sql = "INSERT INTO kengo(num,name,comment,time,password)VALUES($num,'$name','$come','$time','$pass')";
+	$sql = "INSERT INTO app(num,name,comment,time,password)VALUES($num,'$name','$come','$time','$pass')";
 	//sql実行
 	$rezult = $pdo -> query($sql);
 
@@ -48,7 +48,7 @@ if($remove_num !=''){
 if($pass!=''){
 
 //データを削除するsql文
-$sql = "SELECT * FROM kengo WHERE num = $remove_num";
+$sql = "SELECT * FROM app WHERE num = $remove_num";
 
 //sql実行
 $result = $pdo -> query($sql);
@@ -57,7 +57,7 @@ $cat=$neko['password'];
 
 }
 if($pass == $cat){
-$sql = "delete from kengo where num = $remove_num";
+$sql = "delete from app where num = $remove_num";
 //sql実行
 $result = $pdo -> query($sql);
  }
@@ -70,7 +70,7 @@ if($flag!=''){
 //空白判定
 if($name!=''&& $come!=''){
 //データ取得するｓｑｌ文
-	$sql = $sql = "SELECT * FROM kengo WHERE num = $flag";
+	$sql = $sql = "SELECT * FROM app WHERE num = $flag";
 
 //sql実行
 $result = $pdo -> query($sql);
@@ -81,7 +81,7 @@ $result = $pdo -> query($sql);
 }
 //入力されたパスワードとデータベースが同じなら編集する
 if($pass==$DB_pass){
-	$sql = "update kengo set name='$name',comment='$come'where num = $flag";
+	$sql = "update app set name='$name',comment='$come'where num = $flag";
 $result = $pdo->query($sql);
 }
  }
@@ -93,14 +93,14 @@ $flag = '';
 if(strval($edit)!=''){
 
 //入力フォームに名前とコメントを戻すためのｓｑｌ
-	$sql = "SELECT * FROM kengo WHERE num = $edit";
+	$sql = "SELECT * FROM app WHERE num = $edit";
 
 //sql実行
 	$result = $pdo -> query($sql);
 //名前とコメントを結果から読み出すためのforeach文
-	foreach($result as $kengo){
-	$edit_name = $kengo['name'];
-	$edit_come = $kengo['comment'];
+	foreach($result as $app){
+	$edit_name = $app['name'];
+	$edit_come = $app['comment'];
 }
 
 
@@ -120,23 +120,23 @@ if(strval($edit)!=''){
 
 //SELECT文の取り出し
 //編集フラグ
-$sql = "SELECT * FROM kengo WHERE num = $edit";
+$sql = "SELECT * FROM app WHERE num = $edit";
 //sqlを実行
 $result = $pdo->query($sql);
-foreach($result as $kengo){
+foreach($result as $app){
 //名前の取得
-$edit_name = $kengo['name'];
+$edit_name = $app['name'];
 }
 
 }
 //表示機能
-$sql = 'SELECT*FROM kengo';
+$sql = 'SELECT*FROM app';
 $result = $pdo -> query($sql);
-foreach ($result as $kengo){
-echo $kengo['num'].',';
-echo $kengo['edit'].',';
-echo $kengo['name'].',';
-echo $kengo['comment'].'<br>';
+foreach ($result as $app){
+echo $app['num'].',';
+echo $app['edit'].',';
+echo $app['name'].',';
+echo $app['comment'].'<br>';
 }
 ?>
 
